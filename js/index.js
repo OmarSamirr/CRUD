@@ -7,6 +7,7 @@ const form = document.forms[0];
 const selectOption = document.querySelector("select");
 const addBtn = document.getElementById("addBtn");
 const updateBtn = document.getElementById("updateBtn");
+const table = document.querySelector("table");
 
 let data = [];
 let productsList = [];
@@ -40,19 +41,23 @@ inputs.forEach((input) => {
       document.documentElement.dataset.theme = "light";
       icon.classList.replace("fa-sun", "fa-moon");
       localStorage.setItem("theme", "light");
+      table.classList.remove("table-dark");
     } else if (document.documentElement.dataset.theme == "light") {
       document.documentElement.dataset.theme = "dark";
       icon.classList.replace("fa-moon", "fa-sun");
       localStorage.setItem("theme", "dark");
+      table.classList.add("table-dark");
     }
   });
   if (localStorage.getItem("theme") !== null) {
     if (localStorage.getItem("theme") == "dark") {
       document.documentElement.dataset.theme = "dark";
       icon.classList.replace("fa-moon", "fa-sun");
+      table.classList.add("table-dark");
     } else {
       document.documentElement.dataset.theme = "light";
       icon.classList.replace("fa-sun", "fa-moon");
+      table.classList.remove("table-dark");
     }
   }
 })();
