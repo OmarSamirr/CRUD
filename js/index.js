@@ -100,8 +100,8 @@ function displayData(searchTerm = "") {
         <td>${productsList[i].totalPrice}</td>
         <td>${productsList[i].brand}</td>
         <td>${productsList[i].count}</td>
-        <td><button onclick="setFormUpdate(${i})" class="btn btn-sm btn-outline-warning">Update</button>
-        <button onclick="deleteProduct(${i})" class="btn btn-sm btn-outline-danger">Delete</button></td>
+        <td><button onclick="setFormUpdate(${i})" class="btn btn-sm btn-outline-warning mb-md-0 mb-2 ">Update</button>
+        <button onclick="deleteProduct(${i})" class="btn btn-sm btn-outline-danger mb-md-0 mb-2 ">Delete</button></td>
         </tr>
           `;
     }
@@ -109,7 +109,11 @@ function displayData(searchTerm = "") {
   tableData.innerHTML = container;
 }
 function clearInputs() {
-  inputs.forEach((input) => (input.value = ""));
+  inputs.forEach((input) => {
+    input.value = ""
+    input.classList.remove('is-valid')
+    selectOption.classList.remove('is-valid')
+  });
 }
 function updatdeLocalStorage() {
   localStorage.setItem("products'Data", JSON.stringify(productsList));
